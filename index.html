@@ -1,0 +1,705 @@
+<!--
+        Template to use for rich media
+    -->
+    <div id="hc_richmedia">
+        <meta name="viewport" content="width=device-width">
+        <style type="text/css">
+            body {
+                margin: 0;
+            }
+			.hc_tabs_button {
+				width: 100%;
+				position: relative;
+				display: table;
+			}
+            .hc_tabs_button .table-cell {
+                float: left;
+                list-style-type: none;
+                border-right: 1px solid #797d86;
+                border-bottom: 1px solid #797d86;
+            }
+            .hc_tabs_button .table-cell:last-child {
+                border-right: none;
+            }
+            .hc_tabs_button .table-cell a {
+                display: block;
+                text-transform: uppercase;
+                text-align: center;
+                text-decoration: none;
+                color: white;
+                font-size: .8em;
+                padding: .77em .5em;
+                white-space: nowrap;
+            }
+            .hc_tabs_button .hc_tabs_button_events { width: 30%; }
+            .hc_tabs_button .hc_tabs_button_recipes { width: 39%; }
+            .hc_tabs_button .hc_tabs_button_videos { width: 30%;  }
+            .hc_tabs_button .hc_tabs_button_events.active { background-color: #4380c0; }
+            .hc_tabs_button .hc_tabs_button_recipes.active { background-color: #4380c0; }
+            .hc_tabs_button .hc_tabs_button_videos.active { background-color: #4380c0;  }
+
+            #hc_videos, #hc_events {
+                display: none;
+            }
+            #hc_events, #hc_videos, #hc_recipes {
+                color: white;
+            }
+            .hc_wrapper {
+                width: 100%;
+				background-color: #0971ce;
+				margin-top: -20px;
+            }
+            .table { display: table; }
+            .table-row { display: table-row; }
+            .table-cell {
+                display: table-cell;
+                vertical-align: middle;
+            }
+            #hc_richmedia .hc_expand {
+                background: transparent url('images/balance/natural_balance_rm_320x50.gif') no-repeat;
+                width: 320px;
+                height: 50px;
+                display: block;
+            }
+            #hc_richmedia .hc_closebtn {
+                position:absolute;
+                top: 5px;
+				right: 4px;
+                z-index:2;
+                cursor:pointer;
+                display: block;
+                height: 15px;
+                width: 3%;
+            }
+            #hc_richmedia .hc_closebtn img {
+                position:relative;
+                z-index:20;
+				width: 100%;
+            }
+            #hc_richmedia .hc_content {
+                position:relative;
+                width:100%;
+				max-width: 640px;
+                text-align:center;
+                z-index:1;
+                background-color: #0971ce;
+            }
+            #hc_richmedia .hc_header { 
+				display: block; 
+				height: 170px; 
+				background-color: #00518a;
+				position: relative;
+			}
+			
+			/**CUSTOM**/
+			.hc_backbtn {
+				display: none;
+				position: absolute;
+				width: 5%;
+				top: 18%;
+				left: 3%;
+				z-index: 20;
+				cursor: pointer;
+			}
+			.hc_backbtn.on {
+				display: block;
+			}
+			.hc_backbtn img {
+				width: 100%;
+				display: block;
+			}
+			.hc_bg {
+				
+			}
+			.hc_bg img {
+				width: 100%;
+				display: block;
+			}
+			.hc_logo {
+				position: absolute;
+				width: 100%;
+				margin-top: 1em;
+			}
+			.hc_logo img {
+				width: 60%;
+				max-width: 380px;
+			}
+			.hc_content_section.off {
+				display: none;
+			}
+			.hc_locator_section {
+				display: none;
+				background: #deeaea no-repeat url("images/balance/45218.jpg");
+background-position: 100% 100%;
+				padding-top: 20%;
+				padding-bottom: 30%;
+			}
+			.hc_locator_section.on {
+				display: block;
+			}
+			.hc_locator_section .result {
+				border-bottom: 1px solid white;
+				padding: 1em;
+				font-family: Arial;
+			}
+			.hc_locator_section .result.last {
+				border-bottom: none;
+			}
+			.hc_locator_section h2 {
+				color: #0971ce;
+				-webkit-margin-before: 0;
+				-webkit-margin-after: 0;
+			}
+			.hc_locator_section p {
+				color: black;
+				font-weight: normal;
+				font-size: .8em;
+				-webkit-margin-before: 0;
+			}
+			.hc_locator_section h2 {
+				-webkit-margin-before: 0;
+			}
+			.hc_locator_section a {
+				color: #f08801;
+				font-weight: bold;
+			}
+			.hc_locator_section .no_results {
+				padding: 20px 0 150px 0;
+				font-family: Arial;
+			}
+			.hc_food {
+				position: absolute;
+				display: table;
+				margin-top: -80%;
+				width: 100%;
+			}
+			.hc_foodtype {
+				display: table-cell;
+				width: 40%;
+				cursor: pointer;
+			}
+			.hc_foodtype img {
+				width: 80%;
+			}
+			.hc_subhead h1 {
+				color: white;
+				font-family: arial;
+				font-size: 1.7em;
+			}
+			.hc_bwc {
+				width: 100%;
+			}
+			.hc_bwc img {
+				width: 90%;
+				max-width: 327px;
+			}
+			.hc_respond {
+				display: table;
+				padding: 1em;
+			}
+			.hc_social {
+				display: table-cell;
+				width: 40%;
+			}
+			.hc_icon {
+				float: left;
+				width: 30%;
+				vertical-align: bottom;
+			}
+			.hc_icon img {
+				width: 100%;
+				display: block;
+			}
+			.hc_locate {
+				display: table-cell;
+				width: 40%;
+				text-align: left;
+				vertical-align: top;
+			}
+			.hc_locatefield {
+				vertical-align: middle;
+				display: table-cell;
+				width: 70%;
+			}
+			.hc_locatefield label {
+				color: white;
+				font-family: arial;
+				font-size: .8em;
+			}
+			.hc_locatefield input {
+				border-radius: 4px;
+				box-shadow: none;
+				border: 1px solid black;
+				padding: .5em;
+				width: 90%;
+			}
+			.hc_submit {
+				display: table-cell;
+				width: 100%;
+				vertical-align: baseline;
+				position: relative;
+				top: 5px;
+				cursor: pointer;
+			}
+			.hc_submit_img {
+				background-image: url("images/balance/45251.jpg");
+				background-size: cover;
+				height: 100%;
+				width: 50px;
+				background-color: transparent;
+				box-shadow: none;
+				border: none;
+				cursor: pointer;
+			}
+			.hc_home.off {
+				display: none;
+			}
+			/** DOG PRODUCTS**/
+			.hc_dog, .hc_cat {
+				display: none;
+			}
+			.hc_dog.on, .hc_cat.on {
+				display: block;
+			}
+			.hc_dog .hc_subhead, .hc_cat .hc_subhead {
+				position: absolute;
+				width: 100%;
+				margin-top: -100%;
+				font-size: 1.3em;
+				text-align: center;
+			}
+			.hc_dog .hc_subhead h1, .hc_cat .hc_subhead h1 {
+				font-size: 1.7em;
+				padding: 0 3.8em;
+			}
+			.hc_dog .hc_sidebutt, .hc_cat .hc_sidebutt {
+				position: absolute;
+				width: 40%;
+				right: 0;
+				cursor: pointer;
+			}
+			.hc_dog  .hc_sidebutt.hc_whole_body, .hc_cat  .hc_sidebutt.hc_whole_body {
+				margin-top: -80%;
+			}
+			.hc_dog  .hc_sidebutt.hc_explore, .hc_cat  .hc_sidebutt.hc_explore {
+				margin-top: -41%;
+			}
+			.hc_sidebutt img {
+				width: 100%;
+			}
+			.hc_grass img {
+				width: 100%;
+				display: block;
+			}
+			.hc_dog_body, .hc_cat_body {
+				display: none;
+				background: url("images/balance/45254.jpg");
+				background-size: 100% 100%;
+			}
+			.hc_dog_body.on, .hc_cat_body.on {
+				display: block;
+			}
+			.hc_dog_body .hc_subhead, .hc_cat_body .hc_subhead {
+				padding-top: 120px;
+			}
+			.hc_dog_body .hc_subhead h1, .hc_cat_body .hc_subhead h1 {
+				padding: 0 4em;
+				font-size: 2em;
+			}
+			.hc_info_graphic {
+				padding: 0 2em 1em;
+			}
+			.hc_info_graphic img {
+				width: 100%;
+			}
+			.hc_points, .hc_products {
+				display: table;
+				width: 100%;
+				text-align: left;
+				font-family: Arial;
+			}
+			.hc_point_row, .hc_product_row {
+				display: table-row;
+			}
+			.hc_point_column, .hc_product_column {
+				display: table-cell;
+				vertical-align: top;
+				padding: 1em;
+			}
+			.hc_product_column {
+				border-top: 1px white solid;
+			}
+			.hc_product_column.product img {
+				width: 100%;
+			}
+			.hc_point_column.circle {
+				width: 11%;
+				padding: 0 0 0 1em;
+			}
+			.hc_point_column.copy {
+				padding: 0 .5em .8em;;
+			}
+			.hc_point_column.circle img {
+				width: 100%;
+			}
+			.hc_points h2, .hc_products h2 {
+				-webkit-margin-before: 0;
+				-webkit-margin-after: 0;
+				color: #0971ce;
+			}
+			.hc_points p, .hc_products p {
+				-webkit-margin-before: 0;
+			}
+			.hc_dog_products, .hc_cat_products {
+				display: none;
+				background-color: #dfebeb;
+			}
+			.hc_dog_products.on, .hc_cat_products.on {
+				display: block;
+			}
+			@media screen and (max-width: 600px) {
+				.hc_bg img {
+				}
+				.hc_food {
+					margin-top: -80%;
+				}
+				#hc_richmedia .hc_header {
+					height: 150px;
+				}
+				.hc_subhead h1 {
+					font-size: 1.3em;
+				}
+				.hc_locatefield input {
+					width: 85%;
+				}
+				.hc_dog .hc_subhead h1, .hc_cat .hc_subhead h1 {
+					font-size: 1.3em;
+					padding: 0 3em;
+				}
+				.hc_dog_body .hc_subhead, .hc_cat_body .hc_subhead {
+					padding-top: 90px;
+				}
+				.hc_dog_body .hc_subhead h1, .hc_cat_body .hc_subhead h1 {
+					padding: 0 2em;
+					font-size: 1.8em;
+				}
+				.hc_points h2 {
+					font-size: 1.3em;
+				}
+				.hc_points p {
+					font-size: .75em;
+				}
+			}
+			@media screen and (max-width: 500px) {
+				.hc_dog .hc_subhead, .hc_cat .hc_subhead {
+					margin-top: -106%;
+				}
+				.hc_dog_body .hc_subhead, .hc_cat_body .hc_subhead {
+					padding-top: 60px;
+				}
+				.hc_dog_body .hc_subhead h1, .hc_cat_body .hc_subhead h1 {
+					padding: 0 2.4em;
+					font-size: 1.5em;
+				}
+				.hc_social {
+					padding-top: 10px;
+				}
+				.hc_product_column.product {
+					padding: 1em .3em .3em 1em;
+					width: 35%;
+				}
+				.hc_products h2 {
+					font-size: 100%;
+				}
+				hc_products h2 {
+					font-size: 80%;
+				}
+			}
+			@media screen and (max-width: 450px) {
+				#hc_richmedia .hc_header {
+					height: 115px;
+				}
+				.hc_wrapper {
+					margin-top: -10px;
+				}
+				.hc_food {
+					
+				}
+				.hc_subhead h1 {
+					font-size: 1em;
+				}
+				.hc_icon {
+					width: 32%;
+				}
+				.hc_locatefield input {
+					width: 80%;
+				}
+				.hc_dog .hc_subhead, .hc_cat .hc_subhead {
+					margin-top: -100%;
+				}
+				.hc_dog .hc_subhead h1, .hc_cat .hc_subhead h1 {
+					padding: 0 2em;
+				}
+				.hc_dog_body .hc_subhead, .hc_cat_body .hc_subhead {
+					padding-top: 80px;
+				}
+				.hc_point_column.circle {
+					width: 10%;
+				}
+				.hc_points h2 {
+					font-size: 1em;
+				}
+			}
+			@media screen and (max-width: 390px) {
+				.hc_dog .hc_subhead h1, .hc_cat .hc_subhead h1 {
+					font-size: 1em;
+				}
+				.hc_dog_body .hc_subhead, .hc_cat_body .hc_subhead {
+					padding-top: 60px;
+				}
+				.hc_dog_body .hc_subhead h1, .hc_cat_body .hc_subhead h1 {
+					padding: 0 2.4em;
+					font-size: 1.2em;
+				}
+				.hc_point_column.circle {
+					width: 12%;
+				}
+			}
+        </style>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" type="text/javascript"></script>
+		<!--<script src="scripts/balance/hc_framework-0.2.2.min.js"></script>-->
+        <script src="scripts/balance/framework.js"></script>
+		<script type="text/javascript">
+			"use strict";var hc_=new hc_({prod:true,clientId:"3384",targetUrl:"",publisherId:"%p%",augmeId:"%augmeid%",adId:"%ad_id%",campaignId:"%c%",track:""});var section="home";hc_.events.hc_expand_after=function(){hc_$(".hc_dogfood").click(function(e){console.log("click");section="dog_landing";hc_$(".hc_dog").addClass("on");hc_$(".hc_backbtn").addClass("on");hc_$(".hc_home").addClass("off")});hc_$(".hc_catfood").click(function(e){console.log("click");section="cat_landing";hc_$(".hc_cat").addClass("on");hc_$(".hc_backbtn").addClass("on");hc_$(".hc_home").addClass("off");hc_$(".hc_logo img").attr("src","images/balance/45243.png")});hc_$(".hc_dog .hc_whole_body").click(function(e){console.log("click");section="dog_body";hc_$(".hc_dog").removeClass("on");hc_$(".hc_dog_body").addClass("on")});hc_$(".hc_cat .hc_whole_body").click(function(e){console.log("click");section="cat_body";hc_$(".hc_cat").removeClass("on");hc_$(".hc_cat_body").addClass("on")});hc_$(".hc_dog .hc_explore").click(function(e){console.log("click");section="dog_products";hc_$(".hc_dog").removeClass("on");hc_$(".hc_dog_products").addClass("on")});hc_$(".hc_cat .hc_explore").click(function(e){console.log("click");section="cat_products";hc_$(".hc_cat").removeClass("on");hc_$(".hc_cat_products").addClass("on")});hc_$(".hc_backbtn").click(function(e){console.log("click");hc_$(".hc_locator_section").empty();hc_$(".result").remove();switch(section){case"dog_landing":hc_$(".subpage").removeClass("on");hc_$(".hc_home").removeClass("off");hc_$(".hc_backbtn").removeClass("on");section="home";break;case"cat_landing":hc_$(".subpage").removeClass("on");hc_$(".hc_home").removeClass("off");hc_$(".hc_backbtn").removeClass("on");hc_$(".hc_logo img").attr("src","images/balance/45244.png");section="home";break;case"dog_body":hc_$(".hc_dog").addClass("on");hc_$(".hc_dog_body").removeClass("on");section="dog_landing";break;case"cat_body":hc_$(".hc_cat").addClass("on");hc_$(".hc_cat_body").removeClass("on");section="cat_landing";break;case"dog_products":hc_$(".hc_dog").addClass("on");hc_$(".hc_dog_products").removeClass("on");section="dog_landing";break;case"cat_products":hc_$(".hc_cat").addClass("on");hc_$(".hc_cat_products").removeClass("on");section="cat_landing";break;case"locator":hc_$(".hc_content_section").removeClass("off");hc_$(".hc_locator_section").empty().removeClass("on");hc_$(".hc_home").removeClass("off");section="home";default:hc_$(".subpage").removeClass("on");hc_$(".hc_home").removeClass("off");hc_$(".hc_backbtn").removeClass("on");section="home";break}});hc_$(".hc_submit_img").click(function(){hc_$("html, body").animate({scrollTop:0},0);var e=hc_$("input[name='zipCode']").val();hc_$(".hc_content_section").addClass("off");hc_$(".hc_locator_section").empty();hc_$(".hc_locator_section").addClass("on");hc_$(".hc_backbtn").addClass("on");section="locator";if(e.length>0){hc_$.getJSON("http://starcom_2015.imp.aug.me/loc_test1?callback=?&map_zipcode="+e,null,function(e){e=e.data;for(var t in e){console.log(t);var n=hc_$("<div>").addClass("result").append("<h2>"+e[t].name+"</h2>"+"<p>"+e[t].address+"<br>"+e[t].city+", "+e[t].state+" "+e[t].zipcode+"</p><br>"+'<a id="btn_directions"'+'class="hc_ci"'+'data-trackinglabel="Store_Directions"'+"href=//maps.google.com/?q=loc:"+e[t].lat+","+e[t].lng+">Map"+"</a>");hc_$(".hc_locator_section").append(n);if(t==7){hc_$(n).addClass("last")}}});hc_$("input[name='zipCode']").val("")}else{var t=hc_$("<div>").addClass("no_results").append("<h2>No results</h2>");hc_$(".hc_locator_section").append(t)}});hc_$('input[name="zipCode"]').unbind("keyup change input paste").bind("keyup change input paste",function(e){var t=hc_$(this);var n=t.val();var r=n.length;var i=t.attr("maxlength");if(r>i){t.val(t.val().substring(0,i))}})}
+			
+					</script>
+        <!--<script type="text/javascript" src="mraid.js"></script>-->
+        
+
+        <div class="hc_initial_view">
+            <a href="#" class="hc_expand"></a>
+        </div>
+        <div class="hc_content" id="hc_content" style="display:none;">
+			<div class="hc_header">
+				<div class="hc_backbtn"><img src="images/balance/45215.png"/></div>
+				<div class="hc_closebtn" style="display:none;"><img src="images/balance/45222.png" /></div>
+				<div class="hc_logo"><a href="http://ad.doubleclick.net/ddm/clk/284808825;111283542;h"><img src="images/balance/45244.png" /></a></div>
+			</div>
+            <div class="hc_wrapper">
+				<div class="hc_content_section">
+				<div class="hc_home">
+					<div class="hc_bg"><img src="images/balance/45256.jpg" /></div>
+					<div class="hc_food">
+						<div class="hc_foodtype hc_dogfood"><img src="images/balance/45220.png" /></div>
+						<div class="hc_foodtype hc_catfood"><img src="images/balance/45219.png" /></div>
+					</div>
+					<div class="hc_subhead"><h1>Nourish Your Pet From Head To Tail</h1></div>
+					<div class="hc_bwc"><img src="images/balance/45221.png" /></div>
+				</div>
+				<div class="hc_dog subpage dog">
+					<div class="hc_bg"><img src="images/balance/45233.jpg" /></div>
+					<div class="hc_subhead"><h1>Nourish Your Dog From Head To Tail</h1></div>
+					<div class="hc_sidebutt hc_whole_body"><img src="images/balance/45217.png"/></div>
+					<div class="hc_sidebutt hc_explore"><img src="images/balance/45217.png"/></div>
+				</div>
+				<div class="hc_cat subpage cat">
+					<div class="hc_bg"><img src="images/balance/45232.jpg" /></div>
+					<div class="hc_subhead"><h1>Nourish Your Cat From Head To Tail</h1></div>
+					<div class="hc_sidebutt hc_whole_body"><img src="images/balance/45217.png"/></div>
+					<div class="hc_sidebutt hc_explore"><img src="images/balance/45217.png"/></div>
+				</div>
+				<div class="hc_dog_body subpage dog">
+					<div class="hc_bg"></div>
+					<div class="hc_subhead"><h1>Introducing gluten-free formulas designed to nourish your dog from head to tail!</h1></div>
+					<div class="hc_info_graphic"><img src="images/balance/45252.png"/></div>
+					<div class="hc_points">
+						<div class="hc_point_row">
+							<div class="hc_point_column circle"><img src="images/balance/45234.png"/></div>
+							<div class="hc_point_column copy">
+								<h2>Antioxidant Nutrients</h2>
+								<p>Our proprietary blend of antioxidants nutrients 
+helps maintain a healthy immune system.</p>
+							</div>
+						</div>
+						<div class="hc_point_row">
+							<div class="hc_point_column circle"><img src="images/balance/45237.png"/></div>
+							<div class="hc_point_column copy">
+								<h2>Strong &amp; Healthy Bones and Teeth</h2>
+								<p>Proper levels of calcium and phosphorus maintain 
+strong bones for all that fetching and playing.</p>
+							</div>
+						</div>
+						<div class="hc_point_row">
+							<div class="hc_point_column circle"><img src="images/balance/45238.png"/></div>
+							<div class="hc_point_column copy">
+								<h2>Helps Maintain Healthy Heart &amp; Eyes</h2>
+								<p>Added taurine for healthy heart and eye function.</p>
+							</div>
+						</div>
+						<div class="hc_point_row">
+							<div class="hc_point_column circle"><img src="images/balance/45239.png"/></div>
+							<div class="hc_point_column copy">
+								<h2>Supports Neural Development</h2>
+								<p>Formulated with optimal levels of DHA &amp; EPA from 
+marine sources to support an active, healthy brain.</p>
+							</div>
+						</div>
+						<div class="hc_point_row">
+							<div class="hc_point_column circle"><img src="images/balance/45240.png"/></div>
+							<div class="hc_point_column copy">
+								<h2>Supports Healthy Skin &amp; Coat </h2>
+								<p>Balanced Omega-6 and Omega-3 ratios support 
+healthy skin and a luxurious coat.</p>
+							</div>
+						</div>
+						<div class="hc_point_row">
+							<div class="hc_point_column circle"><img src="images/balance/45241.png"/></div>
+							<div class="hc_point_column copy">
+								<h2>Digestive Support</h2>
+								<p>Using multiple types of fibers&mdash;fruits and grains&mdash; 
+our unique fiber layering system helps 
+maintain healthy digestion.</p>
+							</div>
+						</div>
+						<div class="hc_point_row">
+							<div class="hc_point_column circle"><img src="images/balance/45242.png"/></div>
+							<div class="hc_point_column copy">
+								<h2>Healthy Muscle Development</h2>
+								<p>Quality proteins to help support healthy muscle, 
+important at any age.</p>
+							</div>
+						</div>
+					</div>
+					<div class="hc_grass"><img src="images/balance/45218.jpg"/></div>
+				</div>
+				<div class="hc_cat_body subpage cat">
+					<div class="hc_bg"></div>
+					<div class="hc_subhead"><h1>Introducing gluten-free formulas designed to nourish your cat from head to tail!</h1></div>
+					<div class="hc_info_graphic"><img src="images/balance/45253.png"/></div>
+					<div class="hc_points">
+						<div class="hc_point_row">
+							<div class="hc_point_column circle"><img src="images/balance/45234.png"/></div>
+							<div class="hc_point_column copy">
+								<h2>Healthy Muscle Development</h2>
+								<p>Quality proteins to help support healthy muscle, important at any age.</p>
+							</div>
+						</div>
+						<div class="hc_point_row">
+							<div class="hc_point_column circle"><img src="images/balance/45237.png"/></div>
+							<div class="hc_point_column copy">
+								<h2>Strong &amp; Healthy Bones and Teeth</h2>
+								<p>Proper levels of calcium and phosphorus maintain strong bones for all that jumping and pouncing.</p>
+							</div>
+						</div>
+						<div class="hc_point_row">
+							<div class="hc_point_column circle"><img src="images/balance/45238.png"/></div>
+							<div class="hc_point_column copy">
+								<h2>Supports Neural Development</h2>
+								<p>Formulated with optimal levels of DHA &amp; EPA from marine sources to support an active, healthy brain.</p>
+							</div>
+						</div>
+						<div class="hc_point_row">
+							<div class="hc_point_column circle"><img src="images/balance/45239.png"/></div>
+							<div class="hc_point_column copy">
+								<h2>Helps Maintain Healthy Heart &amp; Eyes</h2>
+								<p>Added taurine for healthy heart and eye function.</p>
+							</div>
+						</div>
+						<div class="hc_point_row">
+							<div class="hc_point_column circle"><img src="images/balance/45240.png"/></div>
+							<div class="hc_point_column copy">
+								<h2>Supports Healthy Skin &amp; Coat</h2>
+								<p>Balanced Omega-6 and Omega-3 ratios support healthy skin and a luxurious coat.</p>
+							</div>
+						</div>
+						<div class="hc_point_row">
+							<div class="hc_point_column circle"><img src="images/balance/45241.png"/></div>
+							<div class="hc_point_column copy">
+								<h2>Digestive Support</h2>
+								<p>Using multiple types of fibers&mdash;fruits and grains&mdash;our unique fiber layering system helps maintain healthy digestion.</p>
+							</div>
+						</div>
+						<div class="hc_point_row">
+							<div class="hc_point_column circle"><img src="images/balance/45242.png"/></div>
+							<div class="hc_point_column copy">
+								<h2>Antioxidant Nutrients</h2>
+								<p>Our proprietary blend of antioxidants nutrients helps maintain a healthy immune system.</p>
+							</div>
+						</div>
+					</div>
+					<div class="hc_grass"><img src="images/balance/45218.jpg"/></div>
+				</div>
+				<div class="hc_dog_products subpage dog">
+					<div class="hc_bg"><img src="images/balance/45226.jpg"/></div>
+					<div class="hc_products">
+						<div class="hc_product_row">
+							<div class="hc_product_column product"><a data-adserveaction="dog-product1" href="http://www.naturalbalanceinc.com/product.aspx?ProductId=186&product=Original+Ultra+Whole+Body+Health%E2%84%A2+Chicken%2c+Chicken+Meal%2c+Duck+Meal+Dry+Dog+Formula&ProductCategoryID=7&category=Ultra+Premium+Dry+Dog+Formulas"><img src="images/balance/45248.jpg"/></a></div>
+							<div class="hc_product_column copy">
+								<h2>Original Ultra<sup>&reg;</sup><br/>Whole Body Health<sup>&reg;</sup></h2>
+								<p>Chicken, Chicken Meal, Duck Meal Dry Dog Formula</p>
+							</div>
+						</div>
+						<div class="hc_product_row">
+							<div class="hc_product_column product"><a data-adserveaction="dog-product2" href="http://www.naturalbalanceinc.com/product.aspx?ProductId=187&product=Original+Ultra+Whole+Body+Health%E2%84%A2+Chicken%2c+Chicken+Meal%2c+Duck+Meal+Small+Breed+Bites%C2%AE+Dry+Dog+Formula&ProductCategoryID=7&category=Ultra+Premium+Dry+Dog+Formulas"><img src="images/balance/45249.jpg"/></a></div>
+							<div class="hc_product_column copy">
+								<h2>Original Ultra<sup>&reg;</sup><br/>Whole Body Health<sup>&reg;</sup></h2>
+								<p>Chicken, Chicken Meal, Duck Meal Small Breed Bites<sup>&reg;</sup> Dry Dog Formula</p>
+							</div>
+						</div>
+						<div class="hc_product_row">
+							<div class="hc_product_column product"><a data-adserveaction="dog-product3" href="http://www.naturalbalanceinc.com/product.aspx?ProductId=188&product=Original+Ultra+Whole+Body+Health%E2%84%A2+Venison%2c+Turkey+Meal%2c+Lamb+Meal+Dry+Dog+Formula&ProductCategoryID=7&category=Ultra+Premium+Dry+Dog+Formulas"><img src="images/balance/45250.jpg"/></a></div>
+							<div class="hc_product_column copy">
+								<h2>Original Ultra<sup>&reg;</sup><br/>Whole Body Health<sup>&reg;</sup></h2>
+								<p>Venison, Turkey Meal, Lamb Meal Dry Dog Formula</p>
+							</div>
+						</div>
+					</div>
+					<div class="hc_grass"><img src="images/balance/45218.jpg"/></div>
+				</div>
+				<div class="hc_cat_products subpage cat">
+					<div class="hc_bg"><img src="images/balance/45227.jpg"/></div>
+					<div class="hc_products">
+						<div class="hc_product_row">
+							<div class="hc_product_column product"><a data-adserveaction="cat-product1" href="http://www.naturalbalanceinc.com/product.aspx?ProductId=189&product=Original+Ultra+Whole+Body+Health%E2%84%A2+Chicken+Meal+%26+Salmon+Meal+Dry+Cat+Formula&ProductCategoryID=25&category=Cat+Dry+Formulas"><img src="images/balance/45425.png"/></a></div>
+							<div class="hc_product_column copy">
+								<h2>Original Ultra<sup>&reg;</sup><br/>Whole Body Health<sup>&reg;</sup></h2>
+								<p>Chicken, Chicken Meal, Duck Meal Dry Dog Formula</p>
+							</div>
+						</div>
+						<div class="hc_product_row">
+							<div class="hc_product_column product"><a data-adserveaction="cat-product2" href="http://www.naturalbalanceinc.com/product.aspx?ProductId=175&product=Ultra+Whole+Body+Health+Venison%2c+Turkey+Meal%2c+Lamb+Meal+Dry+Cat+Formula"><img src="images/balance/45246.jpg"/></a></div>
+							<div class="hc_product_column copy">
+								<h2>Original Ultra<sup>&reg;</sup><br/>Whole Body Health<sup>&reg;</sup></h2>
+								<p>Chicken, Chicken Meal, Duck Meal Small Breed Bites<sup>&reg;</sup> Dry Dog Formula</p>
+							</div>
+						</div>
+						<div class="hc_product_row">
+							<div class="hc_product_column product"><a data-adserveaction="cat-product3" href="http://www.naturalbalanceinc.com/product.aspx?ProductId=174&product=Ultra+Whole+Body+Health+Calamari%2c+Salmon+Meal%2c+Duck+Meal+Dry+Cat+Formula"><img src="images/balance/45247.jpg"/></a></div>
+							<div class="hc_product_column copy">
+								<h2>Original Ultra<sup>&reg;</sup><br/>Whole Body Health<sup>&reg;</sup></h2>
+								<p>Venison, Turkey Meal, Lamb Meal Dry Dog Formula</p>
+							</div>
+						</div>
+					</div>
+					<div class="hc_grass"><img src="images/balance/45218.jpg"/></div>
+				</div>
+				</div><!--content section-->
+				<div class="hc_locator_section">
+				</div>
+				<div class="hc_respond">
+					<div class="hc_social">
+						<div class="hc_icon"><a data-adserveaction="facebook" href="https://www.facebook.com/NaturalBalanceFan"><img src="images/balance/45223.jpg" /></a></div>
+						<div class="hc_icon"><a data-adserveaction="twitter" href="https://twitter.com/naturalbalance"><img src="images/balance/45225.jpg" /></a></div>
+						<div class="hc_icon"><a data-adserveaction="instagram" href="http://instagram.com/naturalbalanceinc"><img src="images/balance/45224.jpg" /></a></div>
+					</div>
+					<div class="hc_locate">
+						<div class="hc_locatefield">
+							<label>Store Locator</label>
+							<input type="text" placeholder="Zip Code" name="zipCode" maxlength="5" />
+						</div>
+						<div class="hc_submit"><input type="submit" class="hc_submit_img" value="" name="zipSubmit" /></div>
+					</div>
+				</div>
+            </div>
+        </div>
+    </div>
